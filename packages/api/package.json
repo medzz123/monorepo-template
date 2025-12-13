@@ -1,0 +1,25 @@
+{
+  "name": "@tab-tab-y/api",
+  "exports": {
+    ".": {
+      "default": "./src/index.ts"
+    },
+    "./*": {
+      "default": "./src/*.ts"
+    }
+  },
+  "type": "module",
+  "scripts": {},
+  "devDependencies": {
+    "@types/express": "catalog:",
+    "typescript": "catalog:",
+    "@tab-tab-y/config": "workspace:*"
+  },
+  "dependencies": {
+    "@trpc/server": "catalog:",
+    "@trpc/client": "catalog:",
+    "dotenv": "catalog:",
+    "zod": "catalog:",
+    "@tab-tab-y/db": "workspace:*"
+  }
+}
