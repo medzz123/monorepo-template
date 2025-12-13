@@ -1,37 +1,85 @@
 {
-	"$schema": "https://turbo.build/schema.json",
-	"ui": "tui",
-	"tasks": {
-		"build": {
-			"dependsOn": ["^build"],
-			"inputs": ["$TURBO_DEFAULT$", ".env*"],
-			"outputs": ["dist/**"]
-		},
-		"lint": {
-			"dependsOn": ["^lint"]
-		},
-		"check-types": {
-			"dependsOn": ["^check-types"]
-		},
-		"dev": {
-			"cache": false,
-			"persistent": true
-		},
-		"db:push": {
-			"cache": false,
-			"persistent": true
-		},
-		"db:studio": {
-			"cache": false,
-			"persistent": true
-		},
-		"db:migrate": {
-			"cache": false,
-			"persistent": true
-		},
-		"db:generate": {
-			"cache": false,
-			"persistent": true
-		}
-	}
+  "$schema": "https://turbo.build/schema.json",
+  "ui": "tui",
+  "concurrency": "5",
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build", "^db:generate"],
+      "inputs": ["$TURBO_DEFAULT$"],
+      "outputs": ["dist/**"]
+    },
+    "lint": {},
+    "lint:fix": { "cache": false },
+    "ts": {
+      "dependsOn": ["^ts"]
+    },
+    "@tab/app#ts": {
+      "dependsOn": ["^ts", "@tab/api-routes#trpc"]
+    },
+    "trpc": {
+      "cache": false
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "migrate": {
+      "cache": false,
+      "persistent": true,
+      "interactive": true
+    },
+    "db:reset": {
+      "cache": false,
+      "persistent": false
+    },
+    "db:push": {
+      "cache": false,
+      "persistent": false
+    },
+    "db:studio": {
+      "cache": false,
+      "persistent": true
+    },
+    "db:migrate": {
+      "cache": false,
+      "persistent": true,
+      "interactive": true
+    },
+    "db:generate": {
+      "inputs": ["$TURBO_DEFAULT$"],
+      "outputs": ["generated/**"]
+    },
+    "db:seed": {
+      "cache": false,
+      "persistent": false
+    },
+    "db:up": {
+      "cache": false,
+      "persistent": false
+    },
+    "db:down": {
+      "cache": false,
+      "persistent": false
+    },
+    "db:deploy": {
+      "cache": false,
+      "persistent": false
+    },
+    "check-database-url": {
+      "cache": false,
+      "persistent": false
+    },
+    "deploy-frontend": {
+      "cache": false,
+      "persistent": false
+    },
+    "upload-frontend": {
+      "cache": false,
+      "persistent": false
+    },
+    "sync-env": {
+      "cache": false,
+      "persistent": false
+    }
+  }
 }

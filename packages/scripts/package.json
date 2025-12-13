@@ -1,0 +1,37 @@
+{
+  "name": "@tab/scripts",
+  "main": "src/index.ts",
+  "type": "module",
+  "scripts": {
+    "ts": "tsgo -b --noEmit",
+    "lint": "biome check .",
+    "lint:fix": "biome check . --write",
+    "migrate": "cd ../../ && tsx ./libs/scripts/src/migrate.ts",
+    "check-database-url": "cd ../../ && tsx ./libs/scripts/src/checkDatabaseUrl.ts",
+    "sync-env": "cd ../../ && tsx ./libs/scripts/src/syncEnv.ts",
+    "deploy-frontend": "cd ../../ && tsx ./libs/scripts/src/deployFrontend.ts",
+    "upload-frontend": "cd ../../ && tsx ./libs/scripts/src/uploadFrontend.ts"
+  },
+  "dependencies": {
+    "@google-cloud/storage": "7.7.0",
+    "@inquirer/prompts": "^7.1.0",
+    "axios": "1.12.1",
+    "clipboardy": "^5.0.0",
+    "dayjs": "1.11.10",
+    "dotenv": "^16.3.1",
+    "enquirer": "^2.4.1",
+    "glob": "^13.0.0",
+    "ignore": "^7.0.5",
+    "jscodeshift": "^0.15.2",
+    "lodash-es": "4.17.21",
+    "zod": "3.25.67"
+  },
+  "devDependencies": {
+    "@tab/typescript-config": "workspace:*",
+    "@types/jscodeshift": "^0.11.11",
+    "@types/lodash-es": "4.17.12",
+    "@types/node": "22.13.11",
+    "tsx": "^4.19.2",
+    "@typescript/native-preview": "7.0.0-dev.20251210.1"
+  }
+}

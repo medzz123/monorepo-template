@@ -1,0 +1,28 @@
+{
+  "name": "@tab/api",
+  "type": "module",
+  "scripts": {
+     "ts": "tsgo -b --noEmit",
+ "lint": "biome check .",
+    "lint:fix": "biome check . --write",
+    "dev": "turbo run @tab/scripts#sync-env -- api && tsx watch src/main.ts",
+    "build": "tsdown"
+  },
+  "devDependencies": {
+   "@tab/typescript-config": "workspace:*",
+    "@types/cors": "2.8.17",
+    "@types/express": "4.17.21",
+    "@types/node": "22.13.11",
+      "tsdown": "0.15.6",
+    "tsx": "^4.19.2",
+    "@typescript/native-preview": "7.0.0-dev.20251210.1"
+  },
+  "dependencies": {
+ "@trpc/server": "11.4.3",
+    "axios": "1.12.1",
+    "cors": "^2.8.5",
+      "dotenv": "^16.3.1",
+      "express": "5.2.0",
+          "zod": "3.25.67"
+  }
+}

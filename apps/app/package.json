@@ -1,0 +1,60 @@
+{
+  "name": "@tab/app",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+ "dev": "vite",
+    "build": "vite build",
+    "start": "vite preview",
+        "ts": "NODE_OPTIONS=--max-old-space-size=8192 tsgo -b --noEmit",
+        "lint": "biome check .",
+    "lint:fix": "biome check . --write"
+
+  },
+  "dependencies": {
+     "@dicebear/core": "9.2.2",
+    "@dicebear/thumbs": "^9.2.2",
+    "@mantine/core": "8.3.5",
+        "@mantine/hooks": "8.3.5",
+    "@mantine/modals": "8.3.5",
+    "@mantine/notifications": "8.3.5",
+    "@mantine/spotlight": "8.3.5",
+    "@mantine/tiptap": "8.3.5",
+    
+
+        "@tabler/icons-react": "3.34.0",
+    "@tanstack/react-query": "5.80.3",
+    "@tanstack/react-router": "1.132.47",
+        "@tiptap/core": "2.26.0",
+    "@tiptap/extension-link": "2.26.0",
+    "@tiptap/extension-placeholder": "2.26.0",
+    "@tiptap/extension-task-item": "2.26.0",
+    "@tiptap/extension-task-list": "2.26.0",
+    "@tiptap/extension-underline": "2.26.0",
+    "@tiptap/pm": "2.26.0",
+    "@tiptap/react": "2.26.0",
+    "@tiptap/starter-kit": "2.26.0",
+    "@tiptap/suggestion": "2.26.0",
+
+      "@trpc/client": "11.4.3",
+    "@trpc/react-query": "11.4.3",
+    "@trpc/server": "11.4.3",
+        "react": "19.2.0",
+    "react-dom": "19.2.0",
+        "zod": "3.25.67"
+  },
+  "devDependencies": {
+    "@tab/typescript-config": "workspace:*",
+    "@types/react": "19.2.0",
+    "@types/react-dom": "19.2.0",
+    "@vitejs/plugin-react": "5.1.0",
+    "@vitejs/plugin-react-swc": "4.2.0",
+    "postcss": "8.5.3",
+    "postcss-preset-mantine": "^1.18.0",
+    "postcss-simple-vars": "^7.0.1",
+    "@typescript/native-preview": "7.0.0-dev.20251210.1",
+     "vite": "7.0.8",
+    "vite-tsconfig-paths": "5.1.4"
+  }
+}
