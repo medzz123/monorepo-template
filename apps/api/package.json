@@ -10,6 +10,9 @@
   },
   "devDependencies": {
     "@template/typescript-config": "workspace:*",
+    "@template/api-routes": "workspace:*",
+    "@template/db": "workspace:*",
+    "@template/env": "workspace:*",
     "@types/cors": "2.8.17",
     "@types/express": "4.17.21",
     "@types/node": "22.13.11",

@@ -11,3 +11,7 @@ catalog:
   lodash-es: 4.17.21
   "@types/lodash-es": 4.17.12
   tsdown: 0.15.6
+  "@prisma/client": 7.1.0
+  "prisma": 7.1.0
+  "@prisma/adapter-pg": 7.1.0
+  "decimal.js": 10.4.3
