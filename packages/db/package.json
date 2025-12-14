@@ -7,7 +7,7 @@
   },
   "scripts": {
     "db:reset": "rm -rf generated && pnpm db:down && pnpm db:up && pnpm db:generate && pnpm db:deploy && pnpm db:seed",
-    "db:generate": "prisma db generate",
+    "db:generate": "prisma generate",
     "db:seed": "prisma db seed",
     "db:push": "prisma db push",
     "db:migrate": "pnpm db:generate && prisma migrate dev",
@@ -21,12 +21,12 @@
   },
   "devDependencies": {
     "@template/typescript-config": "workspace:*",
-    "prisma": "6.16.3",
+    "prisma": "7.1.0",
     "tsx": "catalog:"
   },
   "dependencies": {
-    "@prisma/adapter-pg": "6.16.3",
-    "@prisma/client": "6.16.3",
+    "@prisma/adapter-pg": "7.1.0",
+    "@prisma/client": "7.1.0",
     "dotenv": "catalog:",
     "zod": "catalog:"
   }

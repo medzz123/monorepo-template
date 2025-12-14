@@ -12,4 +12,7 @@ export default {
     path: path.join('src', 'prisma', 'migrations'),
     seed: 'tsx src/seed.ts',
   },
+  datasource: {
+    url: process.env.DATABASE_URL ?? '',
+  },
 } satisfies PrismaConfig;

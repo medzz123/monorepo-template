@@ -1,5 +1,5 @@
 {
-  "extends": "@tab/typescript-config/base.json",
+  "extends": "@template/typescript-config/base.json",
   "compilerOptions": {
     "declaration": true,
     "declarationMap": true,
