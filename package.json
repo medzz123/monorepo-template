@@ -1,11 +1,8 @@
 {
-  "name": "tab",
+  "name": "template",
   "private": true,
   "type": "module",
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
+  "workspaces": ["apps/*", "packages/*"],
   "scripts": {
     "commit": "TURBO_UI=0 turbo lint && TURBO_UI=0 turbo ts"
   },

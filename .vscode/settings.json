@@ -1,6 +1,7 @@
 {
   "cSpell.words": [
     "addgroup",
+    "axios",
     "dicebear",
     "dotenv",
     "healthcheck",
@@ -9,6 +10,7 @@
     "libc",
     "tabler",
     "trpc",
+    "tsdown",
     "tsgo",
     "vite"
   ],
