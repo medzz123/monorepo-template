@@ -1,7 +1,7 @@
 /** biome-ignore-all lint/suspicious/noExplicitAny: Its fine usage */
-export type Result<T, E extends Error> = [value: T, error: null] | [value: null, error: E];
+export type ResultType<T, E extends Error> = [value: T, error: null] | [value: null, error: E];
 
-function ok<T, E extends Error = Error>(value: T): Result<T, E> {
+function ok<T, E extends Error = Error>(value: T): ResultType<T, E> {
   return [value, null];
 }
 
@@ -10,14 +10,14 @@ function error<E extends Error>(err: E): [null, E] {
 }
 
 export function wrap<Args extends unknown[], T, EInner extends Error, EWrap extends Error>(
-  fn: (...args: Args) => Promise<Result<T, EInner>>,
+  fn: (...args: Args) => Promise<ResultType<T, EInner>>,
   mapError: (err: unknown) => EWrap
-): (...args: Args) => Promise<Result<T, EInner | EWrap>>;
+): (...args: Args) => Promise<ResultType<T, EInner | EWrap>>;
 
 export function wrap<Args extends unknown[], T, EInner extends Error, EWrap extends Error>(
-  fn: (...args: Args) => Result<T, EInner>,
+  fn: (...args: Args) => ResultType<T, EInner>,
   mapError: (err: unknown) => EWrap
-): (...args: Args) => Result<T, EInner | EWrap>;
+): (...args: Args) => ResultType<T, EInner | EWrap>;
 
 export function wrap(fn: (...args: any[]) => any, mapError: (err: unknown) => Error) {
   return (...args: any[]) => {
@@ -50,8 +50,8 @@ function toError(err: unknown): Error {
   return new Error(message);
 }
 
-function attempt<T>(fn: () => Promise<T>): Promise<Result<T, Error>>;
-function attempt<T>(fn: () => T): Result<T, Error>;
+function attempt<T>(fn: () => Promise<T>): Promise<ResultType<T, Error>>;
+function attempt<T>(fn: () => T): ResultType<T, Error>;
 
 function attempt(fn: () => any): any {
   try {
@@ -66,13 +66,13 @@ function attempt(fn: () => any): any {
 }
 
 async function retry<T, E extends Error>(
-  fn: () => Promise<Result<T, E>>,
+  fn: () => Promise<ResultType<T, E>>,
   opts: {
     attempts: number;
     delay: number | ((attempt: number) => number);
     condition?: (err: E) => boolean;
   }
-): Promise<Result<T, E>> {
+): Promise<ResultType<T, E>> {
   let lastError: E | Error = new Error('Retry failed');
 
   for (let i = 0; i < opts.attempts; i++) {

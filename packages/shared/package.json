@@ -1,8 +1,9 @@
 {
-  "name": "@template/result",
+  "name": "@template/shared",
   "type": "module",
   "exports": {
-    ".": "./src/result.ts"
+    "./zod": "./src/zod.ts",
+    "./json": "./src/json.ts"
   },
   "dependencies": {
     "zod": "catalog:"

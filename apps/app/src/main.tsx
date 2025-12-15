@@ -1,36 +1,34 @@
-import { RouterProvider, createRouter } from "@tanstack/react-router";
-import ReactDOM from "react-dom/client";
-import Loader from "./components/loader";
-import { routeTree } from "./routeTree.gen";
+import '@mantine/core/styles.css';
+import '@mantine/dates/styles.css';
+import '@mantine/dropzone/styles.css';
+import '@mantine/notifications/styles.css';
+import '@mantine/spotlight/styles.css';
+import '@mantine/charts/styles.css';
+import './global-styles.css';
+import './theme/style.css';
 
-import { QueryClientProvider } from "@tanstack/react-query";
-import { queryClient, trpc } from "./utils/trpc";
+import { MantineProvider } from '@mantine/core';
+import { createRouter, RouterProvider } from '@tanstack/react-router';
+import { StrictMode } from 'react';
+import * as ReactDOM from 'react-dom/client';
+import { routeTree } from './routeTree.gen';
+import { shadcnCssVariableResolver } from './theme/cssVariableResolver';
+import { shadcnTheme } from './theme/theme';
 
-const router = createRouter({
-	routeTree,
-	defaultPreload: "intent",
-	defaultPendingComponent: () => <Loader />,
-	context: { trpc, queryClient },
-	Wrap: function WrapComponent({ children }: { children: React.ReactNode }) {
-		return (
-			<QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-		);
-	},
-});
+const router = createRouter({ routeTree });
 
-declare module "@tanstack/react-router" {
-	interface Register {
-		router: typeof router;
-	}
+declare module '@tanstack/react-router' {
+  interface Register {
+    router: typeof router;
+  }
 }
 
-const rootElement = document.getElementById("app");
-
-if (!rootElement) {
-	throw new Error("Root element not found");
-}
-
-if (!rootElement.innerHTML) {
-	const root = ReactDOM.createRoot(rootElement);
-	root.render(<RouterProvider router={router} />);
-}
+// eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
+root.render(
+  <StrictMode>
+    <MantineProvider theme={shadcnTheme} cssVariablesResolver={shadcnCssVariableResolver}>
+      <RouterProvider router={router} />
+    </MantineProvider>
+  </StrictMode>
+);

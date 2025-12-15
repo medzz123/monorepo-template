@@ -1,13 +1,13 @@
-import { Result } from './result';
+import { ResultType } from './result';
 
 const _test = () => {
-  const hello = Result.wrap(
+  const hello = ResultType.wrap(
     (a: number, b: number) => {
       if (b === 0) {
-        return Result.error(new Error('Me no like'));
+        return ResultType.error(new Error('Me no like'));
       }
 
-      return Result.ok(a + b);
+      return ResultType.ok(a + b);
     },
     () => new Error('Something went wrong')
   );
@@ -22,12 +22,12 @@ const _test = () => {
 };
 
 const _testAsync = async () => {
-  const hello = Result.wrap(
+  const hello = ResultType.wrap(
     async (a: number, b: number) => {
       if (b === 0) {
-        return Result.error(new Error('Async nope'));
+        return ResultType.error(new Error('Async nope'));
       }
-      return Result.ok(a + b);
+      return ResultType.ok(a + b);
     },
     () => new Error('Async fail')
   );
