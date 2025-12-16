@@ -13,7 +13,7 @@
     "db:migrate": "pnpm db:generate && prisma migrate dev",
     "db:deploy": "prisma migrate deploy",
     "db:studio": "prisma studio --port 5557",
-    "db:up": "docker rm -f tab-db >/dev/null 2>&1 || true && docker compose up -d --wait",
+    "db:up": "docker rm -f main-db >/dev/null 2>&1 || true && docker compose up -d --wait",
     "db:down": "docker compose down --volumes --remove-orphans || true",
     "ts": "tsgo -b --noEmit",
     "lint": "biome check .",

@@ -1,4 +1,4 @@
-import { Anchor, Button, Container, Group, Text, Title } from '@mantine/core';
+import { Button, Container, Group, Text, Title } from '@mantine/core';
 
 import classes from './ErrorPage.module.css';
 import type { ErrorPageProps } from './ErrorPage.types';
@@ -32,9 +32,7 @@ export const ErrorPage: React.FC<ErrorPageProps> = ({ code, message, title }) =>
           {title || computed.title}
         </Title>
         <Text size="md" ta="center" c="dimmed" mb="md">
-          {message || computed.message} If you need assistance or wish to report this issue, please
-          contact us at <Anchor href="mailto:support@playter.co">support@playter.co</Anchor>. We're
-          here to help!
+          {message || computed.message}, ask help!
         </Text>
 
         <Group justify="center" wrap="nowrap">

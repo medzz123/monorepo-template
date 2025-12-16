@@ -4,7 +4,7 @@ import * as dotenv from 'dotenv';
 
 const findWorkspacePath = (workspaceName: string): string => {
   const appPath = path.join('apps', workspaceName);
-  const libPath = path.join('libs', workspaceName);
+  const libPath = path.join('packages', workspaceName);
 
   if (fs.existsSync(path.join(appPath, 'package.json'))) {
     return appPath;
@@ -14,7 +14,7 @@ const findWorkspacePath = (workspaceName: string): string => {
   }
 
   console.error(
-    `Error: Could not find package.json for workspace "${workspaceName}" in apps/ or libs/.`
+    `Error: Could not find package.json for workspace "${workspaceName}" in apps/ or packages/.`
   );
   process.exit(1);
 };

@@ -7,7 +7,7 @@ export default defineConfig({
   clean: true,
   sourcemap: true,
   unbundle: true,
-  noExternal: [/^@tab\//],
+  noExternal: [/^@template\//],
   external: [/node_modules/],
   platform: 'node',
   target: 'node22',

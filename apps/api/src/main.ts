@@ -1,10 +1,9 @@
-/** biome-ignore-all lint/suspicious/noConsole: <need logger> */
 import 'dotenv/config';
 import util from 'node:util';
-
 import { createContext } from '@template/api-routes/context';
 import { router } from '@template/api-routes/router';
 import { prisma } from '@template/db/prisma';
+import { log } from '@template/logger';
 import { createExpressMiddleware } from '@trpc/server/adapters/express';
 import express, { type Express } from 'express';
 import { env } from './env';
@@ -14,7 +13,7 @@ const app: Express = express();
 const isProduction = env.ENVIRONMENT === 'production';
 
 process.on('uncaughtException', (error) => {
-  console.error('server: uncaught exception', { error });
+  log.error({ error }, 'server: uncaught exception');
   if (!isProduction) {
     return;
   }
@@ -25,10 +24,10 @@ process.on('unhandledRejection', (reason, promise) => {
   try {
     readablePromise = util.inspect(promise);
   } catch (error) {
-    console.error('server: failed to inspect promise', { error });
+    log.error({ error }, 'server: failed to inspect promise');
   }
 
-  console.error(`server: unhandled promise rejection: ${readablePromise}: ${reason}`);
+  log.error(`server: unhandled promise rejection: ${readablePromise}: ${reason}`);
   if (!isProduction) {
     return;
   }
@@ -46,7 +45,7 @@ app.use(
     },
     onError: (opts) => {
       const { error, path } = opts;
-      console.warn(`TRPC Failed on path: ${path}`, { path, error });
+      log.warn({ path, error }, `TRPC Failed on path: ${path}`);
     },
   })
 );
@@ -64,5 +63,5 @@ app.get('/health-check', async (_, res) => {
 });
 
 app.listen(env.PORT, () => {
-  console.log(`Running on port ${env.PORT} - v1`);
+  log.info(`Running on port ${env.PORT} - v1`);
 });

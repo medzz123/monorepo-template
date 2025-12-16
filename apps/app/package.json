@@ -40,6 +40,7 @@
   },
   "devDependencies": {
     "@template/typescript-config": "workspace:*",
+    "@tanstack/router-plugin": "1.132.47",
     "@types/lodash-es": "catalog:",
     "@types/react": "19.2.0",
     "@types/react-dom": "19.2.0",

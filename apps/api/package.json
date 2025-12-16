@@ -5,11 +5,12 @@
     "ts": "tsgo -b --noEmit",
     "lint": "biome check .",
     "lint:fix": "biome check . --write",
-    "dev": "turbo run @tab/scripts#sync-env -- api && tsx watch src/main.ts",
+    "dev": "turbo run @template/scripts#sync-env -- api && tsx watch src/main.ts",
     "build": "tsdown"
   },
   "devDependencies": {
     "@template/typescript-config": "workspace:*",
+    "@template/logger": "workspace:*",
     "@template/api-routes": "workspace:*",
     "@template/db": "workspace:*",
     "@template/env": "workspace:*",

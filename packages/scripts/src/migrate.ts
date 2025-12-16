@@ -1,7 +1,7 @@
 import './checkDatabaseUrl';
 
 import { execSync } from 'node:child_process';
-import { confirm, input, select } from '@inquirer/prompts';
+import { confirm, input } from '@inquirer/prompts';
 
 const main = async () => {
   try {
@@ -15,21 +15,12 @@ const main = async () => {
       default: false,
     });
 
-    const database = await select({
-      message: 'Select the database to apply the migration to:',
-      choices: [
-        { name: 'Main', value: 'prisma' },
-        { name: 'Financials', value: 'financials-prisma' },
-      ],
-    });
     console.log('\nMigration Summary:');
     console.log(`  Name: ${name}`);
-    console.log(`  Name: ${name}`);
-    console.log(`  Database: ${database}`);
     console.log(`  Dry Run: ${dryRun ? 'Yes' : 'No'}`);
 
     execSync(
-      `turbo run @playter/${database}#db:migrate -- --name "${name}" ${dryRun ? '--create-only' : ''}`,
+      `turbo run @template/db#db:migrate -- --name "${name}" ${dryRun ? '--create-only' : ''}`,
       {
         stdio: 'inherit',
       }

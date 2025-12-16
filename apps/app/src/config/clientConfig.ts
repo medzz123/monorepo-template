@@ -18,5 +18,5 @@ const localConfig: Config = {
 };
 // cspell:enable
 
-(window as any).config = (window as any).config ?? localConfig;
-export const clientConfig = (window as any).config as Config;
+(window as any).x_client_config = (window as any).x_client_config ?? localConfig;
+export const clientConfig = (window as any).x_client_config as Config;

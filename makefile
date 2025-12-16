@@ -1,7 +1,13 @@
+kill:
+	@echo "Killing processes on specified ports..."
+	@lsof -ti tcp:7000 | xargs -r kill
+	@lsof -ti tcp:7001 | xargs -r kill
+	@echo "Processes on all specified ports have been killed."
+
 s:
 	$(MAKE) kill
 	rm -rf apps/app/node_modules/.vite
-	pnpm turbo run dev --filter=@tab/app --filter=@tab/api
+	pnpm turbo run dev --filter=@template/app --filter=@template/api
 
 reset:
 	rm -rf .turbo
@@ -9,26 +15,25 @@ reset:
 	pnpm install
 	TURBO_UI=0 pnpm turbo run db:reset --force
 	TURBO_UI=0 pnpm turbo build --force
-	rm -rf libs/api-routes/dist
+	rm -rf packages/api-routes/dist
 	pnpm turbo trpc --force
 
 generate:
 	TURBO_UI=0 pnpm turbo db:generate --force
-	rm -rf libs/api-routes/dist
+	rm -rf packages/api-routes/dist
 	TURBO_UI=0 pnpm turbo trpc
 
 apply:
+	pnpm install
 	TURBO_UI=0 pnpm turbo run @app/scripts#check-database-url
 	TURBO_UI=0 pnpm turbo db:generate --force
 	TURBO_UI=0 pnpm turbo db:deploy --force
-	rm -rf libs/api-routes/dist
+	rm -rf packages/api-routes/dist
 	TURBO_UI=0 pnpm turbo trpc --force
 
-# Runs typecheck on all projects
 ts:
 	pnpm turbo ts
 
-# Runs lints on all projects
 lint:
 	pnpm turbo lint
 
@@ -40,7 +45,7 @@ cleanup:
 	find . -type d -name "generated" -prune -exec rm -rf {} +
 	
 migrate:
-	pnpm turbo run @tab/scripts#migrate
+	pnpm turbo run @template/scripts#migrate
 
 check-database-url:
-	pnpm turbo run @tab/scripts#check-database-url
+	pnpm turbo run @template/scripts#check-database-url
