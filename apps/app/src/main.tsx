@@ -10,7 +10,7 @@ import { createRouter, RouterProvider } from '@tanstack/react-router';
 import { StrictMode } from 'react';
 import * as ReactDOM from 'react-dom/client';
 import { routeTree } from './routeTree.gen';
-import { shadcnCssVariableResolver } from './theme/cssVariableResolver';
+import { shadcnCssVariableResolver } from './theme/css_variable_resolver';
 import { shadcnTheme } from './theme/theme';
 
 const router = createRouter({ routeTree });

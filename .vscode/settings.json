@@ -2,6 +2,9 @@
   "cSpell.words": [
     "addgroup",
     "axios",
+    "cloudrun",
+    "cloudrunv",
+    "cloudscheduler",
     "dicebear",
     "dotenv",
     "healthcheck",
@@ -10,11 +13,18 @@
     "jscodeshift",
     "libc",
     "mantine",
+    "pulumi",
+    "secretmanager",
+    "serviceaccount",
+    "servicenetworking",
+    "sslmode",
+    "Subnetworks",
     "tabler",
     "trpc",
     "tsdown",
     "tsgo",
-    "vite"
+    "vite",
+    "vpcaccess"
   ],
   "files.associations": {
     "*.env": "env",

@@ -2,7 +2,8 @@
   "name": "@template/utils",
   "type": "module",
   "exports": {
-    "./jsonParse": "./src/jsonParse.ts"
+    "./jsonParse": "./src/jsonParse.ts",
+    "./hexAlpha": "./src/hexAlpha.ts"
   },
   "dependencies": {
     "@template/result": "workspace:*",

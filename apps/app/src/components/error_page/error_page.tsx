@@ -1,7 +1,12 @@
 import { Button, Container, Group, Text, Title } from '@mantine/core';
 
-import classes from './ErrorPage.module.css';
-import type { ErrorPageProps } from './ErrorPage.types';
+import classes from './error_page.module.css';
+
+type ErrorPageProps = {
+  code: 403 | 404 | 500;
+  message?: string;
+  title?: string;
+};
 
 export const ErrorPage: React.FC<ErrorPageProps> = ({ code, message, title }) => {
   const computed = {

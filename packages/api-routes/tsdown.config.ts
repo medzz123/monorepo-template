@@ -1,7 +1,7 @@
 import { defineConfig } from 'tsdown';
 
 export default defineConfig({
-  entry: ['./src/appRouter.types.ts'],
+  entry: ['./src/router.ts'],
   dts: { emitDtsOnly: true },
   hash: false,
 });
